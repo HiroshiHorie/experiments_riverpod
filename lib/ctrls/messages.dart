@@ -31,25 +31,25 @@ class MessagesCtrl extends StateNotifier<MessagesState> {
         ])) {
     //
     instanceCounter++;
-    print('$runtimeType() instances:$instanceCounter');
+    print('[MessagesCtrl] init() instances:$instanceCounter');
 
     load();
   }
 
   dispose() {
     instanceCounter--;
-    print('$runtimeType.dispose() instances:$instanceCounter');
+    print('[MessagesCtrl] dispose() instances:$instanceCounter');
     super.dispose();
   }
 
   load() {
     //
-    print('$runtimeType.load() simulate load from internet...');
+    print('[MessagesCtrl] load() Simulate messages fetch from internet...');
 
     Future.delayed(Duration(seconds: 1), () {
       if (mounted) {
         state = state.copyWith(busy: false);
-        print('load done.');
+        print('[MessagesCtrl] load() completed.');
       }
     });
   }

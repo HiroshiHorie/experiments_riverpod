@@ -17,12 +17,12 @@ class InboxCtrl extends StateNotifier<InboxState> {
         )) {
     //
     instanceCounter++;
-    print('$runtimeType() instances:$instanceCounter');
+    print('[InboxCtrl] init() instances:$instanceCounter');
   }
 
   dispose() {
     instanceCounter--;
-    print('$runtimeType.dispose() instances:$instanceCounter');
+    print('[InboxCtrl] dispose() instances:$instanceCounter');
     super.dispose();
   }
 
