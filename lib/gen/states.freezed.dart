@@ -264,3 +264,136 @@ abstract class _InboxState implements InboxState {
   @override
   _$InboxStateCopyWith<_InboxState> get copyWith;
 }
+
+class _$MessagesStateTearOff {
+  const _$MessagesStateTearOff();
+
+  _MessagesState call(
+      {bool busy = true, List<MessageObj> messages = const []}) {
+    return _MessagesState(
+      busy: busy,
+      messages: messages,
+    );
+  }
+}
+
+// ignore: unused_element
+const $MessagesState = _$MessagesStateTearOff();
+
+mixin _$MessagesState {
+  bool get busy;
+  List<MessageObj> get messages;
+
+  $MessagesStateCopyWith<MessagesState> get copyWith;
+}
+
+abstract class $MessagesStateCopyWith<$Res> {
+  factory $MessagesStateCopyWith(
+          MessagesState value, $Res Function(MessagesState) then) =
+      _$MessagesStateCopyWithImpl<$Res>;
+  $Res call({bool busy, List<MessageObj> messages});
+}
+
+class _$MessagesStateCopyWithImpl<$Res>
+    implements $MessagesStateCopyWith<$Res> {
+  _$MessagesStateCopyWithImpl(this._value, this._then);
+
+  final MessagesState _value;
+  // ignore: unused_field
+  final $Res Function(MessagesState) _then;
+
+  @override
+  $Res call({
+    Object busy = freezed,
+    Object messages = freezed,
+  }) {
+    return _then(_value.copyWith(
+      busy: busy == freezed ? _value.busy : busy as bool,
+      messages:
+          messages == freezed ? _value.messages : messages as List<MessageObj>,
+    ));
+  }
+}
+
+abstract class _$MessagesStateCopyWith<$Res>
+    implements $MessagesStateCopyWith<$Res> {
+  factory _$MessagesStateCopyWith(
+          _MessagesState value, $Res Function(_MessagesState) then) =
+      __$MessagesStateCopyWithImpl<$Res>;
+  @override
+  $Res call({bool busy, List<MessageObj> messages});
+}
+
+class __$MessagesStateCopyWithImpl<$Res>
+    extends _$MessagesStateCopyWithImpl<$Res>
+    implements _$MessagesStateCopyWith<$Res> {
+  __$MessagesStateCopyWithImpl(
+      _MessagesState _value, $Res Function(_MessagesState) _then)
+      : super(_value, (v) => _then(v as _MessagesState));
+
+  @override
+  _MessagesState get _value => super._value as _MessagesState;
+
+  @override
+  $Res call({
+    Object busy = freezed,
+    Object messages = freezed,
+  }) {
+    return _then(_MessagesState(
+      busy: busy == freezed ? _value.busy : busy as bool,
+      messages:
+          messages == freezed ? _value.messages : messages as List<MessageObj>,
+    ));
+  }
+}
+
+class _$_MessagesState implements _MessagesState {
+  _$_MessagesState({this.busy = true, this.messages = const []})
+      : assert(busy != null),
+        assert(messages != null);
+
+  @JsonKey(defaultValue: true)
+  @override
+  final bool busy;
+  @JsonKey(defaultValue: const [])
+  @override
+  final List<MessageObj> messages;
+
+  @override
+  String toString() {
+    return 'MessagesState(busy: $busy, messages: $messages)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _MessagesState &&
+            (identical(other.busy, busy) ||
+                const DeepCollectionEquality().equals(other.busy, busy)) &&
+            (identical(other.messages, messages) ||
+                const DeepCollectionEquality()
+                    .equals(other.messages, messages)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(busy) ^
+      const DeepCollectionEquality().hash(messages);
+
+  @override
+  _$MessagesStateCopyWith<_MessagesState> get copyWith =>
+      __$MessagesStateCopyWithImpl<_MessagesState>(this, _$identity);
+}
+
+abstract class _MessagesState implements MessagesState {
+  factory _MessagesState({bool busy, List<MessageObj> messages}) =
+      _$_MessagesState;
+
+  @override
+  bool get busy;
+  @override
+  List<MessageObj> get messages;
+  @override
+  _$MessagesStateCopyWith<_MessagesState> get copyWith;
+}
