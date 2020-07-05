@@ -28,11 +28,22 @@ class RiverpodExperimentApp extends StatelessWidget {
                   children: [
                     child,
                     Positioned(
-                      right: 30,
+                      left: 30,
                       bottom: 30,
-                      child: FloatingActionButton(
+                      child: RaisedButton(
+                        padding: EdgeInsets.symmetric(
+                          vertical: 26,
+                          horizontal: 26,
+                        ),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(26)),
+                        color: Theme.of(ctx).primaryColor,
                         onPressed: () => logCtrl.toggle(),
-                        child: Text('Logs'),
+                        child: Text(
+                          'Toggle Logger',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -49,8 +60,9 @@ class RiverpodExperimentApp extends StatelessWidget {
                       child: ListView.builder(
                         reverse: true,
                         itemCount: logs.length,
-                        itemBuilder: (ctx, i) => ListTile(
-                          title: Text(logs[i]),
+                        itemBuilder: (ctx, i) => Padding(
+                          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 26,),
+                          child: Text(logs[i]),
                         ),
                       ),
                     );
@@ -62,7 +74,8 @@ class RiverpodExperimentApp extends StatelessWidget {
       ),
       routes: {
         '/': (_) => TopPage(),
-        '/chat/inbox': (_) => InboxPage(),
+        '/chat': (_) => ChatPage(),
+        '/chat/auto-dispose': (_) => ChatPage(autoDispose: true),
       },
     );
   }

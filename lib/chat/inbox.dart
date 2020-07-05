@@ -3,12 +3,15 @@ import 'package:experiments_riverpod/ctrls/messages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class InboxPage extends StatelessWidget {
+class ChatPage extends StatelessWidget {
   //
+  final bool autoDispose;
+  ChatPage({this.autoDispose = false});
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text('Chat Experiment'),
+          title: Text('Chat Experiment AutoDispose($autoDispose)'),
         ),
         body: LayoutBuilder(
           builder: (ctx, cons) => Row(
@@ -45,16 +48,9 @@ class InboxPage extends StatelessWidget {
                       child: Text('Please select a user'),
                     );
 
-                  return MessagesView(userId: selectedUserId);
-
-                  return Container(
-                    alignment: Alignment.center,
-                    color: Colors.grey,
-                    child: Consumer((ctx, r) {
-                      final p = r(MessagesCtrl.provider(selectedUserId).state);
-
-                      return Text(p.toString());
-                    }),
+                  return MessagesView(
+                    userId: selectedUserId,
+                    autoDispose: autoDispose,
                   );
                 }),
               ),
@@ -67,20 +63,18 @@ class InboxPage extends StatelessWidget {
 class MessagesView extends StatelessWidget {
   //
   final String userId;
-
-//  Computed<List<MessageObj>> messagesSelector;
+  final bool autoDispose;
 
   MessagesView({
     @required this.userId,
-  }) {
-//    messagesSelector = Computed((r) => r(MessagesCtrl.provider(userId).state).messages);
-  }
+    this.autoDispose = false,
+  });
 
   @override
   Widget build(BuildContext ctx) => Consumer((ctx, r) {
         //
-        final busy = r(MessagesCtrl.busySelector(userId));
-        final messages = r(MessagesCtrl.messagesSelector(userId));
+        final busy = autoDispose ? r(MessagesCtrl.busySelectorAD(userId)) : r(MessagesCtrl.busySelector(userId));
+        final messages = autoDispose ? r(MessagesCtrl.messagesSelectorAD(userId)) : r(MessagesCtrl.messagesSelector(userId));
 
         if (busy)
           return Center(
@@ -89,6 +83,9 @@ class MessagesView extends StatelessWidget {
 
         return Scrollbar(
           child: ListView.builder(
+              padding: EdgeInsets.symmetric(
+                vertical: 26,
+              ),
               reverse: true,
               itemCount: messages.length,
               itemBuilder: (ctx, i) {
