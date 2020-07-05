@@ -13,10 +13,18 @@ dependencies:
     sdk: flutter
 
   flutter_riverpod:
+  freezed_annotation:
+
+  uuid:
 
 dev_dependencies:
+
   flutter_test:
     sdk: flutter
+
+  # Generators
+  build_runner:
+  freezed:
 
 flutter:
 
