@@ -14,6 +14,7 @@ class MessagesCtrl extends StateNotifier<MessagesState> {
   MessagesCtrl({
     @required this.userId,
   }) : super(MessagesState(messages: [
+          MessageObj(message: 'Bye $userId', sent: true),
           MessageObj(message: 'If only there was a way to AutoDispose after a certain Duration...', sent: true),
           MessageObj(message: 'Of course I can do that, but FamilyProviders are already in a way, like a in memory cache.', sent: true),
           MessageObj(message: 'Why dont\'t you just use AutoDispose and cache the messages yourself.'),
