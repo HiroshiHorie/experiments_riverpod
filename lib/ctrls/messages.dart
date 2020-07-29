@@ -8,8 +8,6 @@ class MessagesCtrl extends StateNotifier<MessagesState> {
   //
   static int instanceCounter = 0;
 
-//  final ProviderReference rf;
-
   final String userId;
   MessagesCtrl({
     @required this.userId,
@@ -34,6 +32,12 @@ class MessagesCtrl extends StateNotifier<MessagesState> {
     print('[MessagesCtrl] init() instances:$instanceCounter');
 
     load();
+
+    //
+    //
+    //
+//    print('added Listener');
+//    addListener((state) { });
   }
 
   dispose() {

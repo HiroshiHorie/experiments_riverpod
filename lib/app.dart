@@ -1,4 +1,4 @@
-import 'package:experiments_riverpod/chat/inbox.dart';
+import 'package:experiments_riverpod/chat/chat.dart';
 import 'package:experiments_riverpod/ctrls/logger.dart';
 import 'package:experiments_riverpod/top.dart';
 import 'package:flutter/material.dart';

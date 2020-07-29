@@ -76,6 +76,8 @@ class MessagesView extends StatelessWidget {
         final busy = autoDispose ? r(MessagesCtrl.busySelectorAD(userId)) : r(MessagesCtrl.busySelector(userId));
         final messages = autoDispose ? r(MessagesCtrl.messagesSelectorAD(userId)) : r(MessagesCtrl.messagesSelector(userId));
 
+//        MessagesCtrl.provider
+
         if (busy)
           return Center(
             child: CircularProgressIndicator(),
