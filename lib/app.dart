@@ -1,6 +1,7 @@
 import 'package:experiments_riverpod/chat/chat.dart';
 import 'package:experiments_riverpod/ctrls/logger.dart';
 import 'package:experiments_riverpod/top.dart';
+import 'package:experiments_riverpod/watch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,10 +32,10 @@ class RiverpodExperimentApp extends StatelessWidget {
                       left: 30,
                       bottom: 30,
                       child: RaisedButton(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 26,
-                          horizontal: 26,
-                        ),
+                        // padding: EdgeInsets.symmetric(
+                        //   vertical: 26,
+                        //   horizontal: 26,
+                        // ),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(26)),
                         color: Theme.of(ctx).primaryColor,
                         onPressed: () => logCtrl.toggle(),
@@ -51,7 +52,7 @@ class RiverpodExperimentApp extends StatelessWidget {
               ),
               if (visible)
                 Container(
-                  height: 320,
+                  height: 200,
                   color: Colors.grey[200],
                   child: Consumer((ctx, r) {
                     final logs = r(LoggerCtrl.logsSelector);
@@ -61,7 +62,10 @@ class RiverpodExperimentApp extends StatelessWidget {
                         reverse: true,
                         itemCount: logs.length,
                         itemBuilder: (ctx, i) => Padding(
-                          padding: EdgeInsets.symmetric(vertical: 5, horizontal: 26,),
+                          padding: EdgeInsets.symmetric(
+                            vertical: 5,
+                            horizontal: 26,
+                          ),
                           child: Text(logs[i]),
                         ),
                       ),
@@ -76,6 +80,7 @@ class RiverpodExperimentApp extends StatelessWidget {
         '/': (_) => TopPage(),
         '/chat': (_) => ChatPage(),
         '/chat/auto-dispose': (_) => ChatPage(autoDispose: true),
+        '/watch-test': (_) => WatchTest(),
       },
     );
   }

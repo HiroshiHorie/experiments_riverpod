@@ -31,7 +31,7 @@ class InboxCtrl extends StateNotifier<InboxState> {
     print('Selected $userId');
   }
 
-  static final provider = AutoDisposeStateNotifierProvider<InboxCtrl>((rf) => InboxCtrl(rf));
-  static final usersSelector = Computed((r) => r(provider.state).userIds);
-  static final userIdSelector = Computed((r) => r(provider.state).selectedUserId);
+  static final provider = StateNotifierProvider<InboxCtrl>((ref) => InboxCtrl(ref));
+  static final usersSelector = Provider((ref) => ref.watch(provider.state).userIds);
+  static final userIdSelector = Provider((ref) => ref.watch(provider.state).selectedUserId);
 }

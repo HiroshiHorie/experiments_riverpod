@@ -34,6 +34,6 @@ class LoggerCtrl extends StateNotifier<LoggerState> {
   void toggle() => state = state.copyWith(visible: !state.visible);
 
   static final provider = StateNotifierProvider((_) => LoggerCtrl());
-  static final visibleSelector = Computed((r) => r(provider.state).visible);
-  static final logsSelector = Computed((r) => r(provider.state).logs);
+  static final visibleSelector = Provider((ref) => ref.watch(provider.state).visible);
+  static final logsSelector = Provider((ref) => ref.watch(provider.state).logs);
 }

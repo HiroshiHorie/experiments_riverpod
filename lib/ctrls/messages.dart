@@ -58,12 +58,11 @@ class MessagesCtrl extends StateNotifier<MessagesState> {
     });
   }
 
-  static final provider = StateNotifierProviderFamily<MessagesCtrl, String>((_, userId) => MessagesCtrl(userId: userId));
-  static final messagesSelector = ComputedFamily((r, userId) => r(MessagesCtrl.provider(userId).state).messages);
-  static final busySelector = ComputedFamily((r, userId) => r(MessagesCtrl.provider(userId).state).busy);
+  static final provider = StateNotifierProvider.family<MessagesCtrl, String>((_, userId) => MessagesCtrl(userId: userId));
+  static final messagesSelector = Provider.family((ref, userId) => ref.watch(MessagesCtrl.provider(userId).state).messages);
+  static final busySelector = Provider.family((ref, userId) => ref.watch(MessagesCtrl.provider(userId).state).busy);
 
-  static final providerAD = AutoDisposeStateNotifierProviderFamily<MessagesCtrl, String>((_, userId) => MessagesCtrl(userId: userId));
-  static final messagesSelectorAD = ComputedFamily((r, userId) => r(MessagesCtrl.providerAD(userId).state).messages);
-  static final busySelectorAD = ComputedFamily((r, userId) => r(MessagesCtrl.providerAD(userId).state).busy);
-
+  static final providerAD = StateNotifierProvider.family.autoDispose<MessagesCtrl, String>((_, userId) => MessagesCtrl(userId: userId));
+  static final messagesSelectorAD = Provider.family((ref, userId) => ref.watch(MessagesCtrl.providerAD(userId).state).messages);
+  static final busySelectorAD = Provider.family((ref, userId) => ref.watch(MessagesCtrl.providerAD(userId).state).busy);
 }

@@ -12,8 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_riverpod:
-    path: ../river_pod/packages/flutter_riverpod/
+  flutter_riverpod: 0.6.0-dev+3
+  
   freezed_annotation:
 
   uuid:

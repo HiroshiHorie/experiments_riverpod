@@ -19,6 +19,10 @@ class TopPage extends StatelessWidget {
               onTap: () => Navigator.pushNamed(ctx, '/chat/auto-dispose'),
             ),
             ListTile(
+              title: Text('Watch test'),
+              onTap: () => Navigator.pushNamed(ctx, '/watch-test'),
+            ),
+            ListTile(
               title: Text('Test logger'),
               onTap: () => print('log test ${Uuid().v4()}'),
             ),
